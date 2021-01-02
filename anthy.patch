@@ -1,0 +1,108 @@
+diff --git a/src-main/context.c b/src-main/context.c
+index 5efdba3..9cdbfe3 100644
+--- a/src-main/context.c
++++ b/src-main/context.c
+@@ -562,6 +562,7 @@ anthy_print_candidate(struct cand_ent *ce)
+     seg_score = ce->mw->score;
+   }
+   anthy_putxstr(&ce->str);
++  return;
+   printf(":(");
+   /*if (ce->nr_words == 1) {printf("%d,", ce->elm[0].id);    }*/
+   if (ce->flag & CEF_OCHAIRE) {
+@@ -613,14 +614,11 @@ print_segment(struct seg_ent *e)
+ {
+   int i;
+ 
+-  anthy_putxstr(&e->str);
+-  printf("(");
+   for ( i = 0 ; i < e->nr_cands ; i++) {
+     anthy_print_candidate(e->cands[i]);
+-    printf(",");
++    if (i < e->nr_cands - 1)
++        printf("\n");
+   }
+-  printf(")");
+-  printf(":\n");
+ }
+ 
+ /** コンテキストを表示する */
+@@ -637,18 +635,10 @@ anthy_do_print_context(struct anthy_context *ac, int encoding)
+     return ;
+   }
+   /* 各文字を表示する */
+-  for (i = 0, ce = ac->split_info.ce; i < ac->str.len; i++, ce++) {
+-    if (ce->seg_border) {
+-      printf("|");
+-    }
+-    anthy_putxchar(*(ce->c));
+-  }
+-  printf("\n");
+   /* 各文節を表示する */
+   for (i = 0; i < ac->seg_list.nr_segments; i++) {
+     print_segment(anthy_get_nth_segment(&ac->seg_list, i));
+   }
+-  printf("\n");
+ }
+ 
+ void
+diff --git a/test/main.c b/test/main.c
+old mode 100755
+new mode 100644
+index 644c0e2..428b9ef
+--- a/test/main.c
++++ b/test/main.c
+@@ -27,6 +27,7 @@
+ #include <anthy/anthy.h>
+ #include <anthy/convdb.h>
+ #include <config.h>
++#include <unistd.h>
+ 
+ /* Makefile の $(srcdir) (静的データファイルの基準ディレクトリ) */
+ #ifndef SRCDIR
+@@ -268,7 +269,6 @@ set_string(struct condition *cond, struct res_db *db,
+   }
+ 
+   if (pr) {
+-    printf("%d:(%s)\n", in->serial, in->str);
+     anthy_print_context(ac);
+   }
+   anthy_reset_context(ac);
+@@ -379,24 +379,12 @@ main(int argc,char **argv)
+   db = create_db();
+   read_db(db, expdata);
+ 
+-  printf("./test_anthy --help to print usage.\n");
+-
+-  print_run_env();
+-
+-  fp = fopen(testdata, "r");
+-  if (!fp) {
+-    printf("failed to open %s.\n", testdata);
+-    return 0;
+-  }
+-  
+   ac = init_lib(cond.use_utf8);
+ 
+-  /* ファイルを読んでいくループ */
+-  while (!read_file(fp, &cur_input)) {
+-    if (check_cond(&cond, &cur_input)) {
+-      set_string(&cond, db, &cur_input, ac);
+-    }
+-  }
++  char buf[30];
++  read(STDIN_FILENO, buf, 30);
++  cur_input.str = buf;
++  set_string(&cond, db, &cur_input, ac);
+ 
+   anthy_release_context(ac);
+   anthy_quit();
+@@ -406,8 +394,5 @@ main(int argc,char **argv)
+     ask_results(db);
+   }
+ 
+-  show_stat(db);
+-  save_db(expdata, db);
+-
+   return 0;
+ }
