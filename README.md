@@ -32,4 +32,4 @@ A lightweight alternative to IBus that interacts with Anthy on standard input an
 - Apply `anthy.patch` with, for example, `patch -p1 < ../japanese-cli/anthy.patch`. This removes most printf calls and makes it read from standard input
 - Execute `./configure && make`
 - Install Rust and execute `CARGO_HOME=~/.local/share/cargo cargo install to-kana` for a program that converts romaji to hiragana
-- Add a keybinding that uses [fzfmenu](https://github.com/junegunn/fzf/wiki/Examples#fzf-as-dmenu-replacement) or dmenu with the dynamic options patch. An example for Wayland is: `wtype $(fzfmenu --phony --bind='change:reload(cd /opt/anthy/test; ~/.local/share/cargo/bin/to-kana hira {q} | ./anthy),ctrl-l:jump-accept' < /dev/null)`
+- Add a keybinding that uses [fzfmenu](https://github.com/junegunn/fzf/wiki/Examples#fzf-as-dmenu-replacement) or dmenu with the dynamic options patch. An example for Wayland is: `wtype $(fzfmenu --disabled --bind='change:reload(cd /opt/anthy/test; ~/.local/share/cargo/bin/to-kana hira {q} | ./anthy),ctrl-l:jump-accept' < /dev/null)`
