@@ -5,7 +5,7 @@ You can use sdcv as a terminal dictionary. Install it from your package manager 
 Once you reach a high enough level, you will want the monolingual daijirin dictionary since it has the most information, but this requires some work since it's copyrighted and in an exoteric format:
 
 - Download the KOKUGO Epwing directory from rutracker (the kenkyuusha and kotowaza dictionaries are not worth it in my experience)
-- Download Yomichan Import from https://foosoft.net/projects/yomichan-import/, and use it to convert convert daijirin to JSON
+- Download Yomichan Import from https://foosoft.net/projects/yomichan-import/, and use it to convert daijirin to JSON
 - Extract the resulting zip
 - From the directory with the extracted JSON files, execute this repository's `convert-daijirin.php`
 - Install Stardict's convertion tools. The AUR has `stardict-tools-git`, but it no longers works due to huzheng.org being dead. On Debian you can `apt install stardict-tools`.
