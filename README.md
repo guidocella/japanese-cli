@@ -33,3 +33,4 @@ A lightweight alternative to IBus that interacts with Anthy on standard input an
 - Execute `./configure && make`
 - Install Rust and execute `CARGO_HOME=~/.local/share/cargo cargo install to-kana` for a program that converts romaji to hiragana
 - Add a keybinding that uses [fzfmenu](https://github.com/junegunn/fzf/wiki/Examples#fzf-as-dmenu-replacement) or dmenu with the dynamic options patch. An example for Wayland is: `wtype $(fzfmenu --disabled --bind='change:reload(cd /path/to/anthy/test; ~/.local/share/cargo/bin/to-kana hira {q} | ./anthy),ctrl-l:jump-accept' < /dev/null)`
+- `change:reload(~/.local/share/cargo/bin/to-kana hira {q})` and `change:reload(~/.local/share/cargo/bin/to-kana hira {q})` can be used to convert romaji to Hiragana and Katana instead
