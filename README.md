@@ -18,7 +18,7 @@ Once you reach a high enough level, you will want the monolingual daijirin dicti
 
 This consists of a zsh script that parses the [RADKFILE](http://www.edrdg.org/krad/kradinf.html), and a shell function that lets you select a kanji with fzf, and looks it up in sdcv.
 
-- Download the RADKFILE: `curl ftp://ftp.monash.edu/pub/nihongo/radkfile.gz | gunzip | iconv -f EUC-JP -t UTF-8 -o ${XDG_DATA_HOME:-~/.local/share}/radkfile`
+- Download the RADKFILE: `curl http://ftp.edrdg.org/pub/Nihongo/radkfile.gz | gunzip | iconv -f EUC-JP -t UTF-8 -o ${XDG_DATA_HOME:-~/.local/share}/radkfile`
 - Copy `radicals.zsh` to `~/.local/lib`
 - Define this function in `zshrc`/`bashrc`: `radicals() { ~/.local/lib/radicals.zsh $(awk '/^\$/ {print NR,$2,$3 }' ${XDG_DATA_HOME-~/.local/share}/radkfile | fzf -m --with-nth=2,3 --bind=ctrl-l:jump --preview='~/.local/lib/radicals.zsh {+1}' | cut -d ' ' -f 1) | fzf --bind=ctrl-l:jump-accept | sdcv; }`
 
