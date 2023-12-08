@@ -26,7 +26,7 @@ You use this by selecting the radicals of the kanji you want to look up and pres
 
 ## Minimalistic IME
 
-A lightweight alternative to IBus that interacts with Anthy on standard input and output. This converts one word at a time, so it's only viable if you mostly just read Japanese rather than writing it.
+A lightweight alternative to IBus that interacts with Anthy on standard input and output. This converts one word + one particle at a time, so it's only viable if you mostly just read Japanese rather than writing it.
 
 - Download Anthy's .tar.gz archive from https://packages.debian.org/sid/anthy (as the CLI binary in the old Sourceforge version is broken) and cd to the extracted directory. The later example usage assumes `/opt/anthy`
 - Apply `anthy.patch` with, for example, `patch -p1 < ../japanese-cli/anthy.patch`. This removes most printf calls and makes it read from standard input
