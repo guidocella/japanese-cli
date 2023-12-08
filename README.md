@@ -28,8 +28,8 @@ You use this by selecting the radicals of the kanji you want to look up and pres
 
 A lightweight alternative to IBus that interacts with Anthy on standard input and output. This converts one word + one particle at a time, so it's only viable if you mostly just read Japanese rather than writing it.
 
-- Download Anthy's .tar.gz archive from https://packages.debian.org/sid/anthy (as the CLI binary in the old Sourceforge version is broken) and cd to the extracted directory. The later example usage assumes `/opt/anthy`
+- Download Anthy's .tar.gz archive from https://packages.debian.org/sid/anthy (as the CLI binary in the old Sourceforge version is broken) and cd to the extracted directory.
 - Apply `anthy.patch` with, for example, `patch -p1 < ../japanese-cli/anthy.patch`. This removes most printf calls and makes it read from standard input
 - Execute `./configure && make`
 - Install Rust and execute `CARGO_HOME=~/.local/share/cargo cargo install to-kana` for a program that converts romaji to hiragana
-- Add a keybinding that uses [fzfmenu](https://github.com/junegunn/fzf/wiki/Examples#fzf-as-dmenu-replacement) or dmenu with the dynamic options patch. An example for Wayland is: `wtype $(fzfmenu --disabled --bind='change:reload(cd /opt/anthy/test; ~/.local/share/cargo/bin/to-kana hira {q} | ./anthy),ctrl-l:jump-accept' < /dev/null)`
+- Add a keybinding that uses [fzfmenu](https://github.com/junegunn/fzf/wiki/Examples#fzf-as-dmenu-replacement) or dmenu with the dynamic options patch. An example for Wayland is: `wtype $(fzfmenu --disabled --bind='change:reload(cd /path/to/anthy/test; ~/.local/share/cargo/bin/to-kana hira {q} | ./anthy),ctrl-l:jump-accept' < /dev/null)`
