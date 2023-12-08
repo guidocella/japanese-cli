@@ -10,7 +10,7 @@ Once you reach a high enough level, you will want the monolingual daijirin dicti
 - Download Yomichan Import from https://foosoft.net/projects/yomichan-import/, and use it to convert convert daijirin to JSON
 - Extract the resulting zip
 - From the directory with the extracted JSON files, execute this repository's `convert-daijirin.php`
-- Install Stardict's convertion tools (`stardict-tools-git` on the AUR, `apt install stardict-tools` on Debian)
+- Install Stardict's convertion tools. The AUR has `stardict-tools-git`, but it no longers works due to huzheng.org being dead. On Debian you can `apt install stardict-tools`.
 - Execute `stardict-tabfile daijirin.tab` (Arch) / `tabfile daijirin.tab` (Debian)
 - Execute `mv daijirin.{dict,idx,ifo} ~/.local/share/stardict/dic`
 
