@@ -1,5 +1,3 @@
-Some simple tools for learning Japanese in the terminal.
-
 ## sdcv
 
 You can use sdcv as a terminal dictionary. Install it from your package manager and download JMDict-ja-en and Kanjidic2 from https://web.archive.org/web/20230808110043/http://download.huzheng.org/ja/ to `~/.local/share/stardict/dic`.
