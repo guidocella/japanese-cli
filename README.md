@@ -20,7 +20,7 @@ This consists of a zsh script that parses the [RADKFILE](http://www.edrdg.org/kr
 
 - Download the RADKFILE: `curl http://ftp.edrdg.org/pub/Nihongo/radkfile.gz | gunzip | iconv -f EUC-JP -t UTF-8 -o ${XDG_DATA_HOME:-~/.local/share}/radkfile`
 - Copy `radicals.zsh` to `~/.local/lib`
-- Define this function in `zshrc`/`bashrc`: `radicals() { ~/.local/lib/radicals.zsh $(awk '/^\$/ {print NR,$2,$3 }' ${XDG_DATA_HOME-~/.local/share}/radkfile | fzf -m --with-nth=2,3 --bind=ctrl-l:jump --preview='~/.local/lib/radicals.zsh {+1}' | cut -d ' ' -f 1) | fzf --bind=ctrl-l:jump-accept | sdcv; }`
+- Define this function in `zshrc`/`bashrc`: `radicals() { ~/.local/lib/radicals.zsh $(awk '/^\$/ {print NR,$2,$3 }' ${XDG_DATA_HOME-~/.local/share}/radkfile | fzf -m --with-nth=2,3 --bind=ctrl-l:jump --preview='~/.local/lib/radicals.zsh {+1}' | cut -d ' ' -f 1) | fzf --bind=ctrl-l:jump-accept | sdcv --color; }`
 
 You use this by selecting the radicals of the kanji you want to look up and pressing Tab. You can filter the selections by typing the stroke count, and can move down with Ctrl+j or by showing labels you can jump to with Ctrl+l (mnemonic: label). As you select radicals, the preview window will the show the kanji that contain them. Once you find your kanji, press enter, select it in the new fzf instance, and sdcv will show its definition.
 
