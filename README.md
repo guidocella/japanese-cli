@@ -6,7 +6,7 @@ You can use sdcv as a terminal dictionary. Install it from your package manager 
 
 Once you reach a high enough level, you will want the monolingual daijirin dictionary since it has the most information, but this requires some work since it's copyrighted and in an exoteric format:
 
-- Look up rutracker "epwing" on a search engine, and only download the KOKUGO directory (the kenkyuusha and kotowaza dictionaries are not worth it in my experience)
+- Download the KOKUGO Epwing directory from rutracker (the kenkyuusha and kotowaza dictionaries are not worth it in my experience)
 - Download Yomichan Import from https://foosoft.net/projects/yomichan-import/, and use it to convert convert daijirin to JSON
 - Extract the resulting zip
 - From the directory with the extracted JSON files, execute this repository's `convert-daijirin.php`
